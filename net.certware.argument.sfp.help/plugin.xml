@@ -9,6 +9,7 @@
             file="toc.xml"
             primary="true">
       </toc>
+< br />
    </extension>
    <extension
          point="org.eclipse.help.contexts">
