@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.epsilon.evl.emf.validation">
+      <constraintsBinding
+            constraints="validation/sacm.evl"
+            modelName="SACM"
+            namespaceURI="http://schema.omg.org/SACM/1.0">
+      </constraintsBinding>
+      <constraintsBinding
+            compose="true"
+            constraints="validation/argumentation.evl"
+            namespaceURI="http://schema.omg.org/SACM/1.0/Argumentation">
+      </constraintsBinding>
+      <constraintsBinding
+            compose="true"
+            constraints="validation/evidence.evl"
+            namespaceURI="http://schema.omg.org/SACM/1.0/Evidence">
+      </constraintsBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+         <markerResolutionGenerator
+         	class = "org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+         	markerType = "net.certware.sacm.problem.markers">
+         </markerResolutionGenerator>
+         <markerResolutionGenerator
+         	class = "org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+         	markerType = "org.eclipse.emf.ecore.diagnostic">
+         </markerResolutionGenerator>
+   </extension>
+   <extension
+         id="net.certware.sacm.problem.markers"
+         name="SACM Problem Markers"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+</plugin>

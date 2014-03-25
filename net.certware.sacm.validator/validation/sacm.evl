@@ -1,0 +1,17 @@
+/**
+ * Validation rules and fixes for SACM models.
+ * Epsilon Validation Language
+ * @author mrb
+ */
+ 
+// model elements and descendents
+context ModelElement {
+	// all model elements must have an identifier
+	constraint HasIdentifier {
+		check : self.id.isDefined()
+		message : 'Model element ' + self.eClass().name + ' requires identifier'
+	}	
+} 
+
+
+

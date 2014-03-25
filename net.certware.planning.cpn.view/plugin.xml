@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="net.certware.core.ui.view.category"
+            class="net.certware.planning.cpn.view.CpnViewMasterDetails"
+            icon="icons/obj16/cpn.gif"
+            id="net.certware.planning.cpn.view.masterdetailsview"
+            name="CertWare Planning"
+            restorable="true">
+         <description>
+            Provides a master-details view of the data contained in the CertWare Planning Notation (CPN) file.
+         </description>
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="net.certware.perspective">
+         <view
+               id="net.certware.planning.cpn.view.masterdetailsview"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+         <viewShortcut
+               id="net.certware.planning.cpn.view.masterdetailsview">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="net.certware.planning.cpn.view.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="certware"
+            class="net.certware.planning.cpn.view.preferences.PreferencePage"
+            id="net.certware.planning.cpn.view.preferences.page"
+            name="CPN View and Actions">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="net.certware.core.ui.command.category"
+            defaultHandler="net.certware.planning.cpn.handlers.OpenViewHandler"
+            description="Opens planning model in master-detail view"
+            helpContextId="cpn_instance_context"
+            id="net.certware.planning.cpn.view.open"
+            name="Open CPN view">
+      </command>
+      <command
+            categoryId="net.certware.core.ui.command.category"
+            defaultHandler="net.certware.planning.cpn.handlers.WriteProjectHandler"
+            description="Writes CPN planning model to MSPDI format"
+            id="net.certware.planning.cpn.write.project"
+            name="Write to Microsoft Project">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="net.certware.planning.cpn.view.open"
+            icon="icons/obj16/cpn.gif">
+      </image>
+      <image
+            commandId="net.certware.planning.cpn.write.project"
+            icon="icons/obj16/ms_office.gif">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               icon="icons/obj16/certware.gif"
+               id="net.certware.popup"
+               label="CertWare"
+               tooltip="CertWare associated UI commands">
+            <separator
+                  name="cps">
+            </separator>
+            <command
+                  commandId="net.certware.planning.cpn.view.open"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                           <test
+                                 property="org.eclipse.core.resources.name"
+                                 value="*.cpn">
+                           </test>
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="net.certware.planning.cpn.write.project"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                           <test
+                                 property="org.eclipse.core.resources.name"
+                                 value="*.cpn">
+                           </test>
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

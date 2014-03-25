@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CertWare Project Planning Notation DSL
+Bundle-Vendor: Kestrel Technology LLC
+Bundle-Version: 2.0.0.qualifier
+Bundle-SymbolicName: net.certware.planning.cpn; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.apache.commons.logging;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ com.ibm.icu;resolution:=optional,
+ org.eclipse.emf.ecore,
+ org.antlr.runtime,
+ net.certware.sacm;visibility:=reexport,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtext,
+ org.eclipse.xtext.generator
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: net.certware.planning.cpn,
+ net.certware.planning.cpn.scoping,
+ net.certware.planning.cpn.formatting,
+ net.certware.planning.cpn.services,
+ net.certware.planning.cpn.cpnDsl,
+ net.certware.planning.cpn.cpnDsl.impl,
+ net.certware.planning.cpn.cpnDsl.util,
+ net.certware.planning.cpn.parseTreeConstruction,
+ net.certware.planning.cpn.parser.antlr,
+ net.certware.planning.cpn.parser.antlr.internal
+Bundle-ClassPath: .

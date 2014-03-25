@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="net.certware.core.ui.command.category"
+            defaultHandler="net.certware.history.tasks.handlers.DumpTaskCategoryHandler"
+            description="Dumps task category to console"
+            id="net.certware.history.tasks.dump.category"
+            name="Dump task category">
+      </command>
+      <command
+            categoryId="net.certware.core.ui.command.category"
+            defaultHandler="net.certware.history.tasks.handlers.DumpTaskListHandler"
+            description="Dumps task list to console"
+            id="net.certware.history.tasks.dump.list"
+            name="Dump task list">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="net.certware.history.tasks.dump.category"
+            icon="icons/obj16/history_list.png">
+      </image>
+      <image
+            commandId="net.certware.history.tasks.dump.list"
+            icon="icons/obj16/history_list.png">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               icon="icons/obj16/certware.gif"
+               id="net.certware.popup"
+               label="CertWare"
+               tooltip="CertWare associated UI commands">
+            <separator
+                  name="cps">
+            </separator>
+            <command
+                  commandId="net.certware.history.tasks.dump.category"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <adapt
+                              type="org.eclipse.mylyn.tasks.core.ITaskContainer">
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="net.certware.history.tasks.dump.list"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           ifEmpty="false">
+                        <adapt
+                              type="org.eclipse.core.resources.IProject">
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

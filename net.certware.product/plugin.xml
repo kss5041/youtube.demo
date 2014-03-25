@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            description="CertWare Application Workbench"
+            name="CertWare">
+         <property
+               name="appName"
+               value="CertWare">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="introTitle"
+               value="CertWare Safety Case Workbench">
+         </property>
+         <property
+               name="introBrandingImage"
+               value="product:icons/obj64/certware-64.gif">
+         </property>
+         <property
+               name="introBrandingImageText"
+               value="CertWare">
+         </property>
+         <property
+               name="introDescription-overview"
+               value="Overview">
+         </property>
+         <property
+               name="introDescription-firststeps"
+               value="First Steps">
+         </property>
+         <property
+               name="introDescription-tutorials"
+               value="Tutorials">
+         </property>
+         <property
+               name="introDescription-samples"
+               value="Samples">
+         </property>
+         <property
+               name="introDescription-whatsnew"
+               value="What&apos;s New">
+         </property>
+         <property
+               name="introDescription-migrate"
+               value="Migration">
+         </property>
+         <property
+               name="introDescription-webresources"
+               value="Web Resources">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/obj256/certware-250.png">
+         </property>
+         <property
+               name="aboutText"
+               value="CertWare Safety Case Workbench Desktop Application.">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/obj16/certware.gif,icons/obj32/certware-32.gif,icons/obj48/certware-48.gif,icons/obj64/certware-64.gif,icons/obj128/certware-128.gif">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

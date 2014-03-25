@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ CertWare Project
+ Copyright (c) 2010 National Aeronautics and Space Administration
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <wizard
+            id="net.certware.verification.checklist.presentation.ChecklistModelWizardID"
+            name="Verification Checklist Model"
+            class="net.certware.verification.checklist.presentation.ChecklistModelWizard"
+            category="net.certware.core.ui.newwizard.category"
+            icon="icons/full/obj16/checklist.png">
+         <description>%_UI_ChecklistModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="net.certware.verification.checklist.presentation.ChecklistEditorID"
+            name="%_UI_ChecklistEditor_label"
+            icon="icons/full/obj16/checklist.png"
+            extensions="vcl"
+            class="net.certware.verification.checklist.presentation.ChecklistEditor"
+            contributorClass="net.certware.verification.checklist.presentation.ChecklistActionBarContributor">
+      </editor>
+   </extension>
+
+  <!-- EEF extensions -->
+  <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionProvider">
+      <PropertiesEditionComponentProvider
+            providerClass="net.certware.verification.checklist.providers.ChecklistPackagePropertiesEditionProvider">
+      </PropertiesEditionComponentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPolicyProvider">
+      <PropertiesEditionPolicyProvider
+            providerClass="net.certware.verification.checklist.providers.ChecklistPackagePropertiesEditionProvider">
+      </PropertiesEditionPolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="net.certware.verification.checklist.providers.ChecklistPropertiesEditionPartProvider">
+      </PropertiesEditionPartProvider>
+   </extension>
+
+   <!-- Tabbed properties views extension -->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="net.certware.verification.checklist.properties">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="net.certware.verification.checklist.properties">
+         <propertyTab
+               label="Base"
+               category="default"
+               id="Base">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+  <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="net.certware.verification.checklist.properties">
+         <propertySection
+               class="net.certware.verification.checklist.parts.forms.CategoryPropertiesEditionPartForm"
+               filter="net.certware.verification.checklist.providers.CategoryPropertiesEditionProvider$EditionFilter"
+               id="net.certware.verification.checklist.section.Category"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="net.certware.verification.checklist.parts.forms.ItemPropertiesEditionPartForm"
+               filter="net.certware.verification.checklist.providers.ItemPropertiesEditionProvider$EditionFilter"
+               id="net.certware.verification.checklist.section.Item"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="net.certware.verification.checklist.parts.forms.ChecklistPropertiesEditionPartForm"
+               filter="net.certware.verification.checklist.providers.ChecklistPropertiesEditionProvider$EditionFilter"
+               id="net.certware.verification.checklist.section.Checklist"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>
